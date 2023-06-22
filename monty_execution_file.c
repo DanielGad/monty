@@ -1,5 +1,6 @@
 #include "monty.h"
 #include <string.h>
+#define MAX_LINE_LENGTH 1024
 
 void free_tokens(void);
 unsigned int token_arr_len(void);
@@ -115,7 +116,7 @@ int run_monty(FILE *script_fd) {
     void (*op_func)(stack_t**, unsigned int);
     int exit_status = EXIT_SUCCESS;
 
-    if (init_stack(&stack) == EXIT_FAILURE)
+    if (init_stack(&stack) == EXIT_FAILURE) {
         return EXIT_FAILURE;
 
 	while (fgets(line, MAX_LINE_LENGTH, script_fd) != NULL)
@@ -155,6 +156,7 @@ int run_monty(FILE *script_fd) {
 		}
 		free_tokens();
 	}
+    }
 	free_stack(&stack);
 
 	if (line && *line == 0)
