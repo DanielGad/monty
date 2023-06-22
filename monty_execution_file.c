@@ -113,11 +113,12 @@ int run_monty(FILE *script_fd) {
     char *line = NULL;
     unsigned int line_number = 0, prev_tok_len = 0;
     void (*op_func)(stack_t**, unsigned int);
+    int exit_status = EXIT_SUCCESS;
 
-	if (init_stack(&stack) == EXIT_FAILURE)
-		return EXIT_FAILURE;
+    if (init_stack(&stack) == EXIT_FAILURE)
+        return EXIT_FAILURE;
 
-	while (fgets(line, sizeof(line), script_fd) != NULL)
+	while (fgets(line, MAX_LINE_LENGTH, script_fd) != NULL)
 	{
 		line_number++;
 		op_toks = strtow(line, DELIMS);
