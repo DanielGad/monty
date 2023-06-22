@@ -9,7 +9,7 @@ bus_t bus = {NULL, NULL, NULL, 0};
 
 /**
  * read_line - Custom line reading function
- * @file: File pointer
+ * @file: Files pointer
  * @line: Buffer to store the read line
  * @size: Size of the buffer
  * Return: Number of characters read, -1 on failure or end of file
