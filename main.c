@@ -16,11 +16,11 @@ bus_t bus = {NULL, NULL, NULL, 0};
  */
 ssize_t read_line(FILE *file, char **line, size_t *size)
 {
-    if (!line || !size || !file)
-        return -1;
-
     ssize_t read;
     char buffer[MAX_LINE_LENGTH];
+
+    if (!line || !size || !file)
+        return -1;
 
     if (fgets(buffer, sizeof(buffer), file))
     {
