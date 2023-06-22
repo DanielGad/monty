@@ -9,7 +9,7 @@ void (*get_op_func(char *opcode))(stack_t**, unsigned int);
 int run_monty(FILE *script_fd);
 
 /**
- * free_token - Frees the global op_toks array of strings.
+ * free_tokens - Frees the global op_toks array of strings.
  */
 void free_tokens(void)
 {
