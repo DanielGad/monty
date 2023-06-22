@@ -19,11 +19,10 @@ ssize_t read_line(FILE *file, char **line, size_t *size)
     if (!line || !size || !file)
         return -1;
 
-    ssize_t read = 0;
-    size_t len = 0;
-    char *buffer = NULL;
+    ssize_t read;
+    char buffer[MAX_LINE_LENGTH];
 
-    if (getline(&buffer, &len, file) != -1)
+    if (fgets(buffer, sizeof(buffer), file))
     {
         read = strlen(buffer);
         if (read > 0 && buffer[read - 1] == '\n')
@@ -41,8 +40,11 @@ ssize_t read_line(FILE *file, char **line, size_t *size)
             exit(EXIT_FAILURE);
         }
     }
+    else
+    {
+        return -1;
+    }
 
-    free(buffer);
     return read;
 }
 
